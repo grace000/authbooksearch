@@ -20,7 +20,7 @@ const session = require('cookie-session');
 const PORT = process.env.PORT || 5000;
 
 // Configure express, priority serve any static files
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, 'client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -78,7 +78,7 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
