@@ -7,9 +7,6 @@ require('dotenv').config();
 const config = require('./config');
 const cors = require('cors');
 
-//Import book and user models
-const Book = require('./models/book');
-
 /* Require "auth" service for authenticating users and getting profile info */
 const auth = require('./auth')(config);
 
