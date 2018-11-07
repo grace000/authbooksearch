@@ -1,28 +1,62 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import SavedBooks from './scenes/SavedBooks'
+import Home from './scenes/Home'
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect
+} from 'react-router-dom'
+import axios from 'axios'
 
-class App extends Component {
+const ProtectedRoute = ({ component: Comp, isAuthenticated, path, ...rest }) => {
+  return (
+    <Route
+      path={path}
+      {...rest}
+      render={props => {
+        return isAuthenticated ? <Comp {...props} /> : <Redirect to="/" />;
+      }}
+    />
+  );
+};
+
+
+export default class App extends Component {
+  state = {
+    isAuthenticated: false
+  }
+
+  checkAuthentication = () => {
+    axios.get('/user').then(response => {
+      if (response.data.userAvailable === "false") {
+        this.setState({
+          isAuthenticated: false
+        })
+      } else {
+        this.setState({
+          isAuthenticated: true
+        })
+      }
+    })
+  }
+
+  componentDidMount() {
+    this.checkAuthentication();
+  }
+  
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          <div>
+            <Route exact path="/" 
+                    render={(props) => <Home {...props} isAuthenticated={this.state.isAuthenticated} />}/>
+            <ProtectedRoute path="/savedbooks" isAuthenticated={this.state.isAuthenticated} component={SavedBooks} />
+          </div>
+        </Router>
       </div>
-    );
+    )
   }
 }
-
-export default App;

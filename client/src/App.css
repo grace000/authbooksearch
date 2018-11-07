@@ -1,32 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Shrikhand|Monoton|Kumar+One+Outline');
+
+:root {
+  /* 12px */
+  font-size: 75%;
+
+  --grey-100: #fffbf9;
+  --grey-300: #e7e3e0;
+  --grey-500: #b0b0b0;
+  --grey-700: #797470;
+  --grey-900: #201e1d;
+
+  --orange-100: rgb(255, 217, 205);
+  --orange-300: rgb(245, 171, 148);
+  --orange-500: rgb(243, 126, 90);
+  --orange-700: rgb(204, 105, 74);
+  --orange-900: rgb(131, 60, 38);
+
+  --purple-100: rgb(190, 183, 226);
+  --purple-300: rgb(110, 100, 163);
+  --purple-500: rgb(52, 44, 95);
+  --purple-700: rgb(31, 26, 61);
+  --purple-900: rgb(6, 5, 12);
+
+  --green-100: rgb(163, 196, 188);
+  --green-200: rgb(219, 244, 222);
+  --green-300: rgb(18, 221, 126);
+  --green-400: rgb(58,183,149);
+  --green-500: rgb(34,109,89);
+  --green-700: rgb(20,65,53);
+
+  --red-500: rgb(228, 86, 67);
+  --red-700: rgb(172, 54, 39);
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+a {
+  line-height: 1.5;
+}
+
 .App {
-  text-align: center;
-}
+  overflow-y: scroll;
+  height: 100vh;
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
